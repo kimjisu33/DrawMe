@@ -29,8 +29,9 @@ public class Customer : MonoBehaviour
 
     void MoveDown()
     {
+        transform.position=new Vector2(transform.position.x, transform.position.y-1);
+        rigidbody.velocity = Vector2.down * 15;
         
-        Destroy(gameObject);
     }
 
     public void Reaction(int satisfaction)
@@ -40,10 +41,8 @@ public class Customer : MonoBehaviour
         //3. 밑으로 사라지기 (객체 삭제)
 
         spriteRenderer.sprite = sprite[1];
-        rigidbody.velocity = Vector2.down * 15;
-        //밑으로 사라지고 객체 삭제 되게 만들기!!!!!!!!!!!!!!!!!
-        Invoke("MoveDown", 0.5f);
-
+        Invoke("MoveDown", 1f);
+        Destroy(this.gameObject, 1.5f);
     }
 
    
